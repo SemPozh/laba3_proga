@@ -35,10 +35,13 @@ public class Entity extends Obj {
                 if ((this.getClass() == MumiTroll.class) & ((MumiTroll) this).getFamilyMember()== FamilyMember.mother){
                     System.out.print("их сделал" + ending +  "мама");
                 }
+                break;
             case write:
                 System.out.print(this.name + " написал" + this.ending);
+                break;
             case takeСare:
                 System.out.print(this.name + " берег" + this.ending);
+                break;
         }
     }
 
@@ -52,6 +55,7 @@ public class Entity extends Obj {
                 break;
             case write:
                 System.out.print(this.name + " написал" + this.ending + ": " + '"' + obj.name + '"');
+                break;
         }
     }
 
