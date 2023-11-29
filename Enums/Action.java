@@ -1,5 +1,5 @@
 package Enums;
 
 public enum Action {
-    fold
+    fold, see, makeWrites, write, takeСare
 }

@@ -1,20 +1,70 @@
-import Objects.Basket;
-import Objects.Obj;
-import Objects.Sandwich;
-import Objects.Thing;
+import Enums.*;
+import Objects.*;
 
 public class Life {
     public static void main(String[] args){
+        // creating objects
         Basket basket = new Basket("Она");
-        Thing sandwiches = new Thing("бутербродиками");
+        Thing sandwiches = new Thing("бутербродики");
         Thing wrapper = new Thing("бумагу");
+        Bundle bundle = new Bundle("сверток", 2);
+        Thing content = new Thing("содержимым");
+        MumiTroll mumiTroll = new MumiTroll("Муми-тролль", Gender.Male, FamilyMember.son);
+        MumiTroll mother = new MumiTroll("мама", Gender.Female, FamilyMember.mother);
+        MumiTroll father = new MumiTroll("папа", Gender.Male, FamilyMember.father);
+        Thing writes = new Thing("надписи");
+        Sandwich cheeseSandwich = new Sandwich("Сыр", mother);
+        Sandwich butterSandwich = new Sandwich("Только с маслом", mother);
+        Sandwich expSausageSandwich = new Sandwich("Дороая колбаса", mother);
+        Sandwich goodMorningSandwich = new Sandwich("С добрым утром!", mother);
+        Sandwich[] allSandwiches = {cheeseSandwich, butterSandwich, expSausageSandwich, goodMorningSandwich};
+        Thing fromFatherWrite = new Thing("Это от папы");
+        Thing crabJar = new Thing("банка крабов");
+
+        Obj[] basketFill = {sandwiches};
+        Obj[] bundleFill = {content};
+
+        // adding properties
         wrapper.addProperties("шелковистую");
         sandwiches.addProperties("аккуратными");
         sandwiches.addProperties(" маленькими");
+        content.addProperties("с совершенно разным");
+
+        // showing the result
         System.out.print(basket);
-        Obj[] basketFill = {sandwiches};
         basket.fill(basketFill);
         sandwiches.wrapThing(wrapper);
-//        System.out.println("Она была набита маленькими аккуратными бутербродиками, завернутыми в шелковистую бумагу, в каждом свертке по два, с самым разным содержимым. Муми-тролль сложил бутербродики рядом один к одному, но есть ему не хотелось. Вдруг он увидел надписи на свертках: их сделала мама. На каждом из них стояло либо \"Сыр\", либо \"Только с маслом\", либо \"Дорогая колбаса\", либо \"С добрым утром!\". На последнем мама написала: \"Это от папы\". В свертке оказалась банка крабов, которую папа берег с весны.");
+        bundle.fill(bundleFill);
+        System.out.println(". ");
+        sandwiches.removeAllProperties();
+        mumiTroll.doSomething(Action.fold, sandwiches);
+
+        PlaceSetter.setPlace(Enums.Place.SideBySide);
+        mumiTroll.setWantToEat(false);
+        System.out.println(". ");
+
+        TimeSetter.setTime(Time.suddenly);
+        mumiTroll.setName(mumiTroll.getGender().getPronoun());
+        mumiTroll.doSomething(Action.see, writes);
+        System.out.print(": ");
+        mother.doSomething(Action.makeWrites);
+        System.out.println(".");
+
+        PlaceSetter.setPlace(Place.onEachOfThem);
+        Sandwich.showSandwiches(allSandwiches);
+        System.out.println();
+        PlaceSetter.setPlace(Place.onLast);
+        mother.doSomething(Action.write, fromFatherWrite);
+        System.out.println(".");
+
+        PlaceSetter.setPlace(Place.inBundle);
+        crabJar.fare();
+        System.out.print(", которую ");
+        father.doSomething(Action.takeСare);
+        TimeSetter.setTime(Time.sinceSpring);
+        System.out.print(".");
+
+
+
     }
 }
