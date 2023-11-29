@@ -1,4 +1,4 @@
-package Objects;
+package HelpClasses;
 
 import Enums.Place;
 

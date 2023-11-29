@@ -3,7 +3,7 @@ package Objects;
 import Enums.Action;
 import Enums.FamilyMember;
 import Enums.Gender;
-import Interfaces.Property;
+import java.util.Objects;
 
 // Класс со всеми объектами, которые смогут двигаться
 public class Entity extends Obj {
@@ -60,7 +60,21 @@ public class Entity extends Obj {
     }
 
     @Override
-    public String toString(){
-        return name;
+    public String toString() {
+        return "Entity{" +
+                "name='" + name + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Entity entity = (Entity) o;
+        return Objects.equals(ending, entity.ending) && Objects.equals(name.toLowerCase(), entity.name.toLowerCase());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ending);
     }
 }

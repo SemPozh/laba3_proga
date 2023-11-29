@@ -27,5 +27,4 @@ public class MumiTroll extends Entity {
     public FamilyMember getFamilyMember(){
         return this.familyMember;
     }
-
 }

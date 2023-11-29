@@ -1,4 +1,6 @@
 import Enums.*;
+import HelpClasses.PlaceSetter;
+import HelpClasses.TimeSetter;
 import Objects.*;
 
 public class Life {
@@ -62,7 +64,7 @@ public class Life {
         System.out.print(", которую ");
         father.doSomething(Action.takeСare);
         TimeSetter.setTime(Time.sinceSpring);
-        System.out.print(".");
+        System.out.print('.');
 
 
 
